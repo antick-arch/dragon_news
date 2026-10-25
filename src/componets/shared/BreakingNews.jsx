@@ -43,11 +43,11 @@ const BreakingNews = () => {
         <Marquee className="mx-3">
             {
                 breakingNews.map((news)=>(
-                    <div key={news.id}>
+                    <h2 key={news.id} className="mx-2">
                         {
                             news.title
                         }
-                    </div>
+                    </h2>
                 ))
             }
         </Marquee>

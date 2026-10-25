@@ -38,7 +38,7 @@ const breakingNews = [
 
 const BreakingNews = () => {
   return (
-    <div className="flex container mx-auto">
+    <div className="flex container mx-auto bg-gray-100 p-3 border-none">
         <button className="btn bg-[#D72050] text-white">Latest</button>
         <Marquee className="mx-3">
             {

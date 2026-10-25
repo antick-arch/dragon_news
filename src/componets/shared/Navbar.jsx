@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className='grid grid-cols-3 container mx-auto mt-5'>
             <div>
             </div>
-            <ul className='flex text-[#706F6F] gap-3 place-content-center'>
+            <ul className='flex justify-center items-center text-[#706F6F] gap-3 place-content-center'>
                 <Navlink href="/">Home</Navlink>
                 <Navlink href="/about-us">About</Navlink>
                 <Navlink href="/career">Career</Navlink>

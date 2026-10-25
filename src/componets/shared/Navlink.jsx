@@ -1,10 +1,9 @@
+import Link from 'next/link';
 import React from 'react';
 
-const Navlink = () => {
+const Navlink = ({href,children}) => {
     return (
-        <div>
-            
-        </div>
+        <Link href={href}>{children}</Link>
     );
 };
 

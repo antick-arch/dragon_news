@@ -1,10 +1,14 @@
+import Header from '@/componets/shared/Header';
+import Navbar from '@/componets/shared/Navbar';
 import React from 'react';
 
-const MainLayout = () => {
+const MainLayout = ({children}) => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <Header></Header>
+            <Navbar></Navbar>
+            {children}
+        </>
     );
 };
 

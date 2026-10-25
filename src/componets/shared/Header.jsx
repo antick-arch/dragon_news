@@ -5,6 +5,7 @@ const Header = () => {
     return (
         <div>
             <Image src={headerImg} width={80} height={80}></Image>
+            this is header
         </div>
     );
 };

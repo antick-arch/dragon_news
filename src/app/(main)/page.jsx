@@ -1,9 +1,29 @@
 import Image from "next/image";
-
-export default function Home() {
+async function getCatagories() {
+  const res = await fetch('https://openapi.programming-hero.com/api/news/categories');
+  const data = await res.json();
+  return data.data.news_category;
+}
+export default async function Home() {
+  const categories = await getCatagories();
   return (
-    <div>
-      <h2>this is home page</h2>
+    <div className="container mx-auto grid grid-cols-12 mt-20">
+      <div className="col-span-3">
+        <h2 className="text-xl font-semibold mb-5">All Caterogy</h2>
+        {
+          categories.map((category)=>(
+            <ul>
+              <li className="flex justify-center">{category.category_name}</li>
+            </ul>
+          ))
+        }
+      </div>
+      <div className="col-span-6">
+        <h2 className="text-xl font-semibold mb-5">Dragon News Home</h2>
+      </div>
+      <div className="col-span-3">
+        <h2 className="text-xl font-semibold mb-5">Login With</h2>
+      </div>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import LeftSide from "@/componets/homepage/news/LeftSide";
 import Image from "next/image";
 async function getCatagories() {
   const res = await fetch(
@@ -10,19 +11,7 @@ export default async function Home() {
   const categories = await getCatagories();
   return (
     <div className="container mx-auto grid grid-cols-12 mt-20 gap-10">
-      <div className="col-span-3">
-        <h2 className="text-xl font-semibold mb-5">All Caterogy</h2>
-        <ul>
-          {categories.map((category) => (
-            <li
-              key={category.category_id}
-              className="py-4 pl-13 bg-[#E7E7E7] my-3 text-[#403F3F]"
-            >
-              {category.category_name}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <LeftSide categories={categories} activeId="0"></LeftSide>
       <div className="col-span-6">
         <h2 className="text-xl font-semibold mb-5">Dragon News Home</h2>
       </div>

@@ -1,4 +1,5 @@
 import LeftSide from "@/componets/homepage/news/LeftSide";
+import RightSide from "@/componets/homepage/news/RightSide";
 import Image from "next/image";
 async function getCatagories() {
   const res = await fetch(
@@ -16,7 +17,7 @@ export default async function Home() {
         <h2 className="text-xl font-semibold mb-5">Dragon News Home</h2>
       </div>
       <div className="col-span-3">
-        <h2 className="text-xl font-semibold mb-5">Login With</h2>
+        <RightSide></RightSide>
       </div>
     </div>
   );

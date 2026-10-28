@@ -8,7 +8,7 @@ const LeftSide = ({ categories, activeId }) => {
       <ul>
         {categories.map((category) => (
           <Link
-            href={`category/${category.category_id}`}
+            href={`${category.category_id}`}
             key={category.category_id}
             className={`block py-4 pl-13 ${activeId === category.category_id && "bg-[#E7E7E7]"}  my-3 text-[#403F3F]`}
           >

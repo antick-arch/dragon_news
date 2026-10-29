@@ -13,9 +13,9 @@ const NewsDetailsPage = async ({ params }) => {
       <div className="col-span-6">
         <h2 className="text-xl font-semibold mb-5">Dragon News Home</h2>
         <div>
-          {categoriesNews.map((news) => (
+          {categoriesNews.length>0?(categoriesNews.map((news) => (
             <h2 key={news._id}>{news.title}</h2>
-          ))}
+          ))) : (<h2>No Data found</h2>)}
         </div>
       </div>
       <div className="col-span-3">

@@ -13,7 +13,7 @@ const NewsDetailsPage = async ({ params }) => {
       <LeftSide categories={categories} activeId={id}></LeftSide>
       <div className="col-span-6">
         <h2 className="text-xl font-semibold mb-5">Dragon News Home</h2>
-        <div>
+        <div className="space-y-7">
           {categoriesNews.length>0?(categoriesNews.map((news) => (
             <NewsCard key={news._id} news={news}></NewsCard>
           ))) : (<h2>No Data found</h2>)}

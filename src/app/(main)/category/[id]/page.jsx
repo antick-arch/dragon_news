@@ -1,5 +1,6 @@
 import LeftSide from "@/componets/homepage/news/LeftSide";
 import RightSide from "@/componets/homepage/news/RightSide";
+import NewsCard from "@/componets/homepage/NewsCard";
 import { getCatagories, getCatagoriesByID } from "@/lib/data";
 import React from "react";
 
@@ -14,7 +15,7 @@ const NewsDetailsPage = async ({ params }) => {
         <h2 className="text-xl font-semibold mb-5">Dragon News Home</h2>
         <div>
           {categoriesNews.length>0?(categoriesNews.map((news) => (
-            <h2 key={news._id}>{news.title}</h2>
+            <NewsCard key={news._id} news={news}></NewsCard>
           ))) : (<h2>No Data found</h2>)}
         </div>
       </div>

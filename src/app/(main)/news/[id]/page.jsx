@@ -1,18 +1,11 @@
 import RightSide from "@/componets/homepage/news/RightSide";
+import { getNewsDetails } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsArrowLeft } from "react-icons/bs";
-import { FaStar } from "react-icons/fa";
-import { IoEye } from "react-icons/io5";
 
-async function getNewsDetails(detailedId) {
-  const res = await fetch(
-    `https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a`,
-  );
-  const data = await res.json();
-  return data.data[0];
-}
+
 
 const NewsDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -35,7 +28,7 @@ const NewsDetailsPage = async ({ params }) => {
           <p className="text-[1rem] text-[#706F6F]">
             {detailedData.details}
           </p>
-          <Link className="btn flex items-center text-white bg-[#D72050] w-fit mt-5" href={`/`}><BsArrowLeft className="text-2xl"></BsArrowLeft>All news in this category</Link>
+          <Link className="btn flex items-center text-white bg-[#D72050] w-fit mt-5" href={`/category/${detailedData.category_id}`}><BsArrowLeft className="text-2xl"></BsArrowLeft>All news in this category</Link>
         </div>
         
       </div>

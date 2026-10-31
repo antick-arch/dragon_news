@@ -45,8 +45,8 @@ const NewsCard = ({ news }) => {
           <p className="line-clamp-3 text-[1rem] text-[#706F6F]">
             {news.details}
           </p>
-          <Link href={"/news/1"} className="text-[#FF8C47] font-semibold">
-            Reda More
+          <Link href={`/news/${news._id}`} className="text-[#FF8C47] font-semibold">
+            Read More
           </Link>
         </div>
         <div className="divider"></div>

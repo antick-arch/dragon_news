@@ -7,10 +7,12 @@ const LoginPage = () => {
         <h2>Login your account</h2>
         <form>
           <fieldset className="fieldset">
-            <label className="label" htmlFor="name">
-              Name
-            </label>
-            <input type="text" id="name" className="input" placeholder="Name" />
+            <legend className="fieldset-legend">What is your name?</legend>
+            <input type="text" className="input" placeholder="Type here" />
+          </fieldset>
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend">What is your name?</legend>
+            <input type="text" className="input" placeholder="Type here" />
           </fieldset>
         </form>
       </div>

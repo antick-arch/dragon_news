@@ -1,7 +1,18 @@
+"use client";
 import Link from "next/link";
 import React from "react";
+import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const loginSubmit = (data) => {
+    console.log(data);
+  };
+  console.log(errors);
   return (
     <div className="container mx-auto min-h-[80vh] bg-gray-100 flex justify-center items-center mt-5">
       <div className="bg-white rounded-md p-18">
@@ -11,7 +22,7 @@ const LoginPage = () => {
         <div className="flex w-full flex-col">
           <div className="divider"></div>
         </div>
-        <form>
+        <form onSubmit={handleSubmit(loginSubmit)}>
           <fieldset className="fieldset">
             <legend className="fieldset-legend font-semibold text-xl text-[#403F3F]">
               Email Address
@@ -20,7 +31,11 @@ const LoginPage = () => {
               type="email"
               className="input bg-[#F3F3F3] w-full"
               placeholder="Enter your email address"
+              {...register("email", { required: "Email is required" })}
             />
+            <p className="text-red-500">
+              {errors.password && errors.email.message}
+            </p>
           </fieldset>
           <fieldset className="fieldset">
             <legend className="fieldset-legend font-semibold text-xl text-[#403F3F]">
@@ -30,11 +45,25 @@ const LoginPage = () => {
               type="password"
               className="input bg-[#F3F3F3] w-full"
               placeholder="Enter your password"
+              {...register("password", { required: "Password is required" })}
             />
+            <p className="text-red-500">
+              {errors.password && errors.password.message}
+            </p>
           </fieldset>
-          <button className="btn w-full bg-[#403F3F] text-white mt-7">Submit</button>
+          <button
+            type="submit"
+            className="btn w-full bg-[#403F3F] text-white mt-7"
+          >
+            Login
+          </button>
         </form>
-        <p className="mt-7">Dont’t Have An Account ? <Link className="text-red-500" href={'/registration'}>Register</Link></p>
+        <p className="mt-7">
+          Dont’t Have An Account ?{" "}
+          <Link className="text-red-500" href={"/registration"}>
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );

@@ -1,10 +1,12 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const LoginPage = () => {
+  const [isShowPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -48,11 +50,12 @@ const LoginPage = () => {
               Password
             </legend>
             <input
-              type="password"
-              className="input bg-[#F3F3F3] w-full"
+              type={isShowPassword ? "text" : "password"}
+              className="input bg-[#F3F3F3] absolute"
               placeholder="Enter your password"
               {...register("password", { required: "Password is required" })}
             />
+            {isShowPassword ? <FaRegEye onClick={()=>setShowPassword(!isShowPassword)} className="relative top-2 left-82 text-2xl"/> : <FaRegEyeSlash onClick={()=>setShowPassword(!isShowPassword)} className="relative top-2 left-82 text-2xl"/>}
             <p className="text-red-500">
               {errors.password && errors.password.message}
             </p>

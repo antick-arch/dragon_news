@@ -1,27 +1,88 @@
+'use client';
 import React from "react";
+import { useForm } from "react-hook-form";
 
 const RegistrationPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const registerSubmit = (data) => {
+    console.log(data);
+  };
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="w-188 h-175 flex flex-col items-center justify-center bg-gray-200">
-        <h2 className="text-3xl font-medium">Login your account</h2>
-        <form>
+    <div className="container mx-auto min-h-[80vh] bg-gray-100 flex justify-center items-center mt-5">
+      <div className="bg-white rounded-md p-18">
+        <h2 className="text-center text-4xl font-semibold">
+          Register your account
+        </h2>
+        <div className="flex w-full flex-col">
+          <div className="divider"></div>
+        </div>
+        <form onSubmit={handleSubmit(registerSubmit)}>
           <fieldset className="fieldset">
-            <legend className="fieldset-legend">Email address</legend>
+            <legend className="fieldset-legend font-semibold text-xl text-[#403F3F]">
+              Your Name
+            </legend>
             <input
               type="text"
-              className="input"
+              className="input bg-[#F3F3F3] w-full"
               placeholder="Enter your email address"
+              {...register("name", { required: "Name is required" })}
             />
+            <p className="text-red-500">
+              {errors.name && errors.name.message}
+            </p>
           </fieldset>
           <fieldset className="fieldset">
-            <legend className="fieldset-legend">Password</legend>
+            <legend className="fieldset-legend font-semibold text-xl text-[#403F3F]">
+              Photo URL
+            </legend>
             <input
               type="text"
-              className="input"
-              placeholder="Enter your password"
+              className="input bg-[#F3F3F3] w-full"
+              placeholder="Enter your email address"
+              {...register("photo", { required: "photo is required" })}
             />
+            <p className="text-red-500">
+              {errors.photo && errors.photo.message}
+            </p>
           </fieldset>
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend font-semibold text-xl text-[#403F3F]">
+              Email Address
+            </legend>
+            <input
+              type="email"
+              className="input bg-[#F3F3F3] w-full"
+              placeholder="Enter your email address"
+              {...register("email", { required: "Email is required" })}
+            />
+            <p className="text-red-500">
+              {errors.email && errors.email.message}
+            </p>
+          </fieldset>
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend font-semibold text-xl text-[#403F3F]">
+              Password
+            </legend>
+            <input
+              type="password"
+              className="input bg-[#F3F3F3] w-full"
+              placeholder="Enter your password"
+              {...register("password", { required: "Password is required" })}
+            />
+            <p className="text-red-500">
+              {errors.password && errors.password.message}
+            </p>
+          </fieldset>
+          <button
+            type="submit"
+            className="btn w-full bg-[#403F3F] text-white mt-7"
+          >
+            Login
+          </button>
         </form>
       </div>
     </div>

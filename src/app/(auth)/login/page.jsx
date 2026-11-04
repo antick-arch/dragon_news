@@ -12,7 +12,6 @@ const LoginPage = () => {
   const loginSubmit = (data) => {
     console.log(data);
   };
-  console.log(errors);
   return (
     <div className="container mx-auto min-h-[80vh] bg-gray-100 flex justify-center items-center mt-5">
       <div className="bg-white rounded-md p-18">
@@ -34,7 +33,7 @@ const LoginPage = () => {
               {...register("email", { required: "Email is required" })}
             />
             <p className="text-red-500">
-              {errors.password && errors.email.message}
+              {errors.email && errors.email.message}
             </p>
           </fieldset>
           <fieldset className="fieldset">

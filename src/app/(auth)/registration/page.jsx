@@ -1,5 +1,6 @@
-'use client';
-import React from "react";
+"use client";
+import { authClient } from "@/lib/auth-client";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const RegistrationPage = () => {
@@ -8,8 +9,22 @@ const RegistrationPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const registerSubmit = (data) => {
-    console.log(data);
+  const registerSubmit = async (data) => {
+    const { name, email, password, photo } = data;
+    const { data: res, error } = await authClient.signUp.email({
+      name: name,
+      email: email,
+      password: password,
+      image: photo,
+      callbackURL: "/",
+    });
+    console.log(res, error);
+    if(error){
+      alert(error.message);
+    }
+    if(res){
+      alert("registration successfull")
+    }
   };
   return (
     <div className="container mx-auto min-h-[80vh] bg-gray-100 flex justify-center items-center mt-5">
@@ -31,9 +46,7 @@ const RegistrationPage = () => {
               placeholder="Enter your email address"
               {...register("name", { required: "Name is required" })}
             />
-            <p className="text-red-500">
-              {errors.name && errors.name.message}
-            </p>
+            <p className="text-red-500">{errors.name && errors.name.message}</p>
           </fieldset>
           <fieldset className="fieldset">
             <legend className="fieldset-legend font-semibold text-xl text-[#403F3F]">
@@ -81,7 +94,7 @@ const RegistrationPage = () => {
             type="submit"
             className="btn w-full bg-[#403F3F] text-white mt-7"
           >
-            Login
+            Register
           </button>
         </form>
       </div>

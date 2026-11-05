@@ -20,6 +20,12 @@ const LoginPage = () => {
       rememberMe: true, 
       callbackURL: "/", 
     });
+    if(error){
+      alert(error.message);
+    }
+    if(res){
+      alert("registration successfull")
+    }
   };
   return (
     <div className="container mx-auto min-h-[80vh] bg-gray-100 flex justify-center items-center mt-5">
